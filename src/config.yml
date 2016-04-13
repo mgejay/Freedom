@@ -1,0 +1,57 @@
+## DarthCraft Auto Location Plugin Configuration File.
+
+name: ImmaFreedom
+
+motd: "&cImmaFreedom - Free OP 1.9"
+
+Blocked-Cmds:
+  - time
+  - gamemode
+  - ban
+  - pardon
+  - ban-ip
+  - pardon-ip
+  - toggledownfall
+  - effect
+  - enderchest
+  - spreadplayers
+  - execute
+  - blockdata
+  - clearhistory
+  - save-all
+  - save-on
+  - save-off
+
+SA-Commands:
+  - kick
+  - socialspy
+  - kill
+  - /generate
+  - /
+  - superpickaxe
+  - brush
+  - size
+  - /mask
+  - mat
+  - /butcher
+  - scoreboard
+  - setspawn
+  - /snow
+  - tellraw
+  - forestgen
+  - setidletimeout
+  - mail sendall
+  - eco reset
+  - mask
+  - gmask
+  - lrbuild
+  - defaultgamemode
+  - reload
+  - title
+  - worldborder
+  - weather
+  - tpall
+  - setblock
+  - green
+  - gamerule
+  - togglejail

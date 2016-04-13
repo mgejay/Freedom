@@ -1,0 +1,8 @@
+name: Freedom
+main: me.adapt.freedom.core.Freedom
+version: 1.3
+author: [Adaptified]
+description: The newest Freedom plugin by adaptified
+softdepend: [Aero]
+
+commands: 
