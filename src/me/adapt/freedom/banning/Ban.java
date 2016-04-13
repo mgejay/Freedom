@@ -20,7 +20,7 @@ public class Ban {
         plugin.bans.set(Ips.getIp(player) + ".reason", reason);
     }
 
-    public void initiateUnban(Player player, CommandSender sender) {
+    public void initiateUnban(Player player) {
         plugin.bans.set(Ips.getIp(player), null);
     }
 
