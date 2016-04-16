@@ -254,7 +254,7 @@ public class PlayerListener implements Listener {
         final UserData data = UserData.getPlayerData(player);
 
         if (data.obtainNick() != null && data.obtainTag() != null) {
-            event.setFormat(Util.colorize(data.obtainTag() + ChatColor.GRAY + " [" + ChatColor.WHITE + "-" + data.obtainNick() + ChatColor.GRAY + "] &8 ->&r ") + event.getMessage());
+            event.setFormat(Util.colorize(data.obtainTag() + ChatColor.GRAY + " [ " + data.obtainNick() + ChatColor.GRAY + "] &8 ->&r ") + event.getMessage());
         }
 
         if (data.obtainNick() == null && data.obtainTag() != null) {
@@ -262,7 +262,7 @@ public class PlayerListener implements Listener {
         }
 
         if (data.obtainNick() != null && data.obtainTag() == null) {
-            event.setFormat(ChatColor.GRAY + "[" + ChatColor.WHITE + "-" + Util.colorize(data.obtainNick() + ChatColor.GRAY + "] &8 ->&r ") + event.getMessage());
+            event.setFormat(ChatColor.GRAY + "[ " Util.colorize(data.obtainNick() + ChatColor.GRAY + "] &8 ->&r ") + event.getMessage());
         }
 
         if (data.obtainNick() == null && data.obtainTag() == null) {
