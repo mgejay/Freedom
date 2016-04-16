@@ -1,13 +1,25 @@
-## DarthCraft Auto Location Plugin Configuration File.
+## Freedom configuration File.
 
-name: ImmaFreedom
+# Servers name
+server-name: ImmaFreedom
 
-motd: "&cImmaFreedom - Free OP 1.9"
+# Motd that displays during a ping on the server list
+# %servername% is the String above
+motd: "%servername% - Free OP 1.9"
 
+# Ban url, more info below
+banurl: http://example.com
+
+# Can a user appeal from a ban (true or false), will return message above if true
+canappeal: true
+
+# Limit the access of the server to admins only (true or false)
+lockdown-enabled: false
+
+# Commands that nobody can do, blocks aliases automatically when real command is blocked {include a / before the command for worldedit commands}
 Blocked-Cmds:
   - time
   - gamemode
-  - ban
   - pardon
   - ban-ip
   - pardon-ip
@@ -22,8 +34,10 @@ Blocked-Cmds:
   - save-on
   - save-off
 
+# Commands that only superadmins and higher can do, blocks aliases automatically when real command is blocked {include a / before the command for worldedit commands}
 SA-Commands:
   - kick
+  - co
   - socialspy
   - kill
   - /generate

@@ -65,11 +65,12 @@ public class UserData {
     private boolean CMDSPYon = true;
     private boolean halted = false;
     private String tag = null;
+    private String nick = null;
     private Location frozenArea;
     private BukkitTask autounmute;
     private BukkitTask autounfreeze;
 
-    private UserData(Player player, UUID uuid, String ip) {
+    public UserData(Player player, UUID uuid, String ip) {
         this.player = player;
         this.uuid = uuid;
         this.ip = ip;
@@ -100,8 +101,16 @@ public class UserData {
         return this.CMDSPYon;
     }
 
-    public void setCMDSPYon(boolean cmdspyon) {
-        this.CMDSPYon = cmdspyon;
+    public void setCMDSPYon(boolean CMDSPYon) {
+        this.CMDSPYon = CMDSPYon;
+    }
+
+    public boolean inAC() {
+        return this.CMDSPYon;
+    }
+
+    public void setInAC(boolean inAC) {
+        this.inAC = inAC;
     }
 
     public void setTag(String tag) {
@@ -116,6 +125,18 @@ public class UserData {
         return this.tag;
     }
 
+    public void setNick(String nick) {
+        if (nick == null) {
+            this.nick = null;
+        } else {
+            this.nick = Util.colorize(nick) + ChatColor.RESET;
+        }
+    }
+
+    public String obtainNick() {
+        return this.nick;
+    }
+
     public boolean Halted() {
         return this.halted;
     }
@@ -127,7 +148,6 @@ public class UserData {
             player.setOp(false);
             player.setGameMode(GameMode.SURVIVAL);
             player.setFlying(false);
-            player.chat("/nick off");
             setFrozen(true);
             setMuted(true);
 
@@ -138,7 +158,7 @@ public class UserData {
             setFrozen(false);
             setMuted(false);
 
-            message(player, "You have been release from the halt.", ChatColor.RED);
+            message(player, "You have been released from the halt.", ChatColor.RED);
         }
 
     }

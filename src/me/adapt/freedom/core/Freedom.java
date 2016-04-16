@@ -1,11 +1,12 @@
 package me.adapt.freedom.core;
 
-import me.adapt.freedom.cmds.CMD_ban;
+import me.adapt.freedom.cmds.CMD_o;
 import me.adapt.freedom.listener.PlayerListener;
 import net.pravian.aero.command.handler.AeroCommandHandler;
 import net.pravian.aero.command.handler.SimpleCommandHandler;
 import net.pravian.aero.config.YamlConfig;
 import net.pravian.aero.plugin.AeroPlugin;
+import org.bukkit.ChatColor;
 import org.bukkit.plugin.PluginManager;
 
 public class Freedom extends AeroPlugin<Freedom> {
@@ -13,7 +14,7 @@ public class Freedom extends AeroPlugin<Freedom> {
     public static Freedom plugin;
     public static AeroCommandHandler handler;
     public YamlConfig config;
-    public YamlConfig admins;
+    public static YamlConfig admins;
     public YamlConfig bans;
 
     //
@@ -30,7 +31,7 @@ public class Freedom extends AeroPlugin<Freedom> {
         Freedom.plugin = this;
         handler = new SimpleCommandHandler(plugin);
         handler.setCommandClassPrefix("CMD_");
-        handler.loadFrom(CMD_ban.class.getPackage());
+        handler.loadFrom(CMD_o.class.getPackage());
         handler.registerAll(handler.getCommandClassPrefix(), true);
 
         config.load();
@@ -47,4 +48,7 @@ public class Freedom extends AeroPlugin<Freedom> {
         Freedom.plugin = null;
     }
 
+    public static String colorize(String color) {
+        return ChatColor.translateAlternateColorCodes('&', color);
+    }
 }
