@@ -14,7 +14,12 @@ public class CMD_cmdspy extends SimpleCommand<Freedom> {
 
     @Override
     public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
-
+        
+        if (!(sender instanceof Player)) {
+            message(sender, "Console cannot toggle cmdspy, please include message!");
+        }
+        
+        
         if (!Rank.getRank(sender).isAtLeast(Rank.SA)) {
             message(sender, "No permission!", ChatColor.YELLOW);
             return true;

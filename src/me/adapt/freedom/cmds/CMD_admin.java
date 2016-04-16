@@ -87,7 +87,7 @@ public class CMD_admin extends SimpleCommand<Freedom> {
                 if (Rank.Admin(player)) {
                     Util.action(sender.getName(), "Removing " + player.getName() + " from admin", true);
                     final Admin admin = new Admin();
-                    admin.removeAdmin(Ips.getIp(player).replace(".", "-"));
+                    admin.removeAdmin(player.getUniqueId().toString());
                     admin.save();
                     return true;
                 }
@@ -119,6 +119,7 @@ public class CMD_admin extends SimpleCommand<Freedom> {
                 if (Rank.Imposter(player)) {
                     Util.action(sender.getName(), "Verifying " + player.getName(), true);
                     plugin.admins.set(player.getUniqueId().toString() + ".ip", Ips.getIp(player));
+                    player.kickPlayer(ChatColor.RED + "You have been verified, relog for your permissions and data!");
                     plugin.admins.save();
                     return true;
                 }

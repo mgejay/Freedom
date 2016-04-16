@@ -26,8 +26,8 @@ public class Admin {
 
     }
 
-    public void removeAdmin(String IP) {
-        plugin.admins.set(IP, null);
+    public void removeAdmin(String UUID) {
+        plugin.admins.set(UUID, null);
     }
 
     public void save() {
