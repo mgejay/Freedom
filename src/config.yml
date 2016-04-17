@@ -57,6 +57,7 @@ SA-Commands:
   - mail sendall
   - eco reset
   - mask
+  - stop
   - gmask
   - lrbuild
   - defaultgamemode
