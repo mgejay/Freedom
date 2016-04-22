@@ -36,6 +36,7 @@ Blocked-Cmds:
 
 # Commands that only superadmins and higher can do, blocks aliases automatically when real command is blocked {include a / before the command for worldedit commands}
 SA-Commands:
+  - /floodfill
   - kick
   - co
   - socialspy
