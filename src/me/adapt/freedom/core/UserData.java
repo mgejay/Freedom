@@ -40,7 +40,7 @@ public class UserData {
 
         if (Bukkit.getOnlineMode()) {
             for (UserData check : DATATable.values()) {
-                if (check.equals(player.getName().equalsIgnoreCase(player.getName()))) {
+                if (check.equals(player.getName())) {
                     userdata = check;
                     break;
                 }
