@@ -242,32 +242,25 @@ public class PlayerListener implements Listener {
             event.setMotd(Util.colorize(plugin.config.getString("motd").replace("%servername%", plugin.config.getString("server-name")) + "\nServer is full!"));
         }
 
-        if (!plugin.bans.contains(ip) && !plugin.config.getBoolean("lockdown-enabled") && !(Bukkit.getOnlinePlayers().size() >= Bukkit.getMaxPlayers())) {
-            event.setMotd(Util.colorize(plugin.config.getString("motd").replace("%servername%", plugin.config.getString("server-name"))));
-        }
-
+        event.setMotd(Util.colorize(plugin.config.getString("motd").replace("%servername%", plugin.config.getString("server-name"))));
     }
 
     @EventHandler(priority = EventPriority.NORMAL)
     public void onPlayerChat(PlayerChatEvent event) {
         final Player player = event.getPlayer();
         final UserData data = UserData.getPlayerData(player);
+        String nick = null;
+        String tag = null;
 
-        if (data.obtainNick() != null && data.obtainTag() != null) {
-            event.setFormat(Util.colorize(data.obtainTag() + ChatColor.GRAY + " [" + ChatColor.WHITE + "-" + data.obtainNick() + ChatColor.GRAY + "] &8 ->&r ") + event.getMessage());
+        if (data.obtainNick() != null) {
+            nick = Util.colorize(data.obtainNick());
         }
 
-        if (data.obtainNick() == null && data.obtainTag() != null) {
-            event.setFormat(Util.colorize(data.obtainTag() + " &7[" + player.getName() + "&7] &8->&r ") + event.getMessage());
+        if (data.obtainTag() != null) {
+            tag = Util.colorize(data.obtainTag());
         }
 
-        if (data.obtainNick() != null && data.obtainTag() == null) {
-            event.setFormat(ChatColor.GRAY + "[" + ChatColor.WHITE + "-" + Util.colorize(data.obtainNick() + ChatColor.GRAY + "] &8 ->&r ") + event.getMessage());
-        }
-
-        if (data.obtainNick() == null && data.obtainTag() == null) {
-            event.setFormat(Util.colorize("&7[" + player.getName() + "&7] &8 ->&r ") + event.getMessage());
-        }
+        event.setFormat((tag != null ? tag + " " : "") + ChatColor.GRAY + "[" + (nick != null ? ChatColor.WHITE + "-" + nick : ChatColor.GRAY + player.getName()) + ChatColor.GRAY "] " + ChatColor.DARK_GRAY + "-> " + ChatColor.WHITE + event.getMessage());
 
         if (data.Muted()) {
             event.setCancelled(true);
